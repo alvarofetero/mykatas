@@ -15,5 +15,15 @@ namespace StringCalculator202207
             Assert.Equal(0, result);
             
         }
+
+        public void Returns1GivenStringWith1()
+        {
+            var calculator = new StringCalculator();
+
+            var result = calculator.Add("1");
+
+            Assert.Equal(1, result);
+
+        }
     }
 }
