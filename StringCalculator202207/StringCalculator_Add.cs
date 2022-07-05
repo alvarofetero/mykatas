@@ -55,5 +55,14 @@ namespace StringCalculator202207
             Assert.Equal(expectedResult, result);
         }
 
+        [Theory]
+        [InlineData("//;\n1;2;4", 7)]
+        public void ReturnsSumGivenStringWithThreeCustomDelimiterSeparetedNumber(string numbers, int expectedResult)
+        {
+            var result = calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+        }
+
     }
 }
