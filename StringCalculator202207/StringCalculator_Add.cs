@@ -5,28 +5,34 @@ namespace StringCalculator202207
 {
     public class StringCalculator_Add
     {
+        private StringCalculator calculator = new StringCalculator();
+
         [Fact]
         public void Returns0GivenEmptyString()
         {
-            var calculator = new StringCalculator();
-
             var result = calculator.Add("");
 
             Assert.Equal(0, result);
-            
         }
 
         [Theory]
         [InlineData("1",1)]
         [InlineData("2", 2)]
-        public void Returns1GivenStringWith1(string numbers, int expectedResult)
+        public void ReturnsNumberGivenStringWithOneNumber(string numbers, int expectedResult)
         {
-            var calculator = new StringCalculator();
-
             var result = calculator.Add(numbers);
 
             Assert.Equal(expectedResult, result);
+        }
 
+        [Theory]
+        [InlineData("1,2", 3)]
+        [InlineData("2,3", 5)]
+        public void ReturnsSumGivenStringWithTwoCommaSeparetedNumber(string numbers, int expectedResult)
+        {
+            var result = calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
         }
     }
 }
