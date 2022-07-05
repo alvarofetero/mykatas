@@ -67,5 +67,18 @@ namespace StringCalculator202207
             Assert.Equal(expectedResult, result);
         }
 
+        [Theory]
+        [InlineData("-1,4", "Negatives not allowed: -1")]
+        [InlineData("-1,-4", "Negatives not allowed: -1,-4")]
+        public void ThrowsGivenNegativeInputs(string numbers, string expectedMessage)
+        {
+            Action action = () => calculator.Add(numbers);
+
+            var ex = Assert.Throws<Exception>(action);
+
+            Assert.Equal(expectedMessage, ex.Message);
+
+        }
+
     }
 }
