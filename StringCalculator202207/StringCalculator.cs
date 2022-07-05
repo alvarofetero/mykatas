@@ -15,10 +15,9 @@ namespace StringCalculator202207
             var useCutomSeparator = numbers.StartsWith("//");
             if (useCutomSeparator)
             {
-                var theNewCharacter = ';';
-                delimiters.Add(theNewCharacter);
-                var onlyNumbers=numbers.Split('\n').Skip(1);
-                numbers = string.Join("",onlyNumbers);
+                delimiters.Add(GetCustomCharacter(numbers));
+                var onlyNumbers = numbers.Split('\n').Skip(1);
+                numbers = string.Join("", onlyNumbers);
             }
 
             var elements = numbers.Split(delimiters.ToArray());
@@ -28,5 +27,17 @@ namespace StringCalculator202207
 
             return result;
         }
+
+        private char GetCustomCharacter(string inputString)
+        {
+            var theNewCharacter = ';';
+
+            var firstCharacterAfterRemovedCustomMarker = string.Join(' ',inputString.Split("//").TakeLast(1)).First();
+
+            theNewCharacter = firstCharacterAfterRemovedCustomMarker;
+            
+            return theNewCharacter;
+        }
     }
+    
 }
