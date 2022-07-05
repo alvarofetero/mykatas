@@ -44,5 +44,16 @@ namespace StringCalculator202207
 
             Assert.Equal(expectedResult, result);
         }
+
+        [Theory]
+        [InlineData("1\n2,4", 7)]
+        [InlineData("2\n3\n5", 10)]
+        public void ReturnsSumGivenStringWithThreeCommaOrNewLineSeparetedNumber(string numbers, int expectedResult)
+        {
+            var result = calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+        }
+
     }
 }
