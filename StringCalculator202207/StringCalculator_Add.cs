@@ -34,5 +34,15 @@ namespace StringCalculator202207
 
             Assert.Equal(expectedResult, result);
         }
+
+        [Theory]
+        [InlineData("1,2,4", 7)]
+        [InlineData("2,3,5", 10)]
+        public void ReturnsSumGivenStringWithThreeCommaSeparetedNumber(string numbers, int expectedResult)
+        {
+            var result = calculator.Add(numbers);
+
+            Assert.Equal(expectedResult, result);
+        }
     }
 }
